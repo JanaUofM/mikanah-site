@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Updates & Findings — Mikanah Gatherings</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .updates-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 48px 48px 64px; background: var(--cream); align-items: start; }
+    .post-card { background: #fff; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 24px; transition: box-shadow 0.2s; }
+    .post-card:hover { box-shadow: 0 4px 16px rgba(61,31,10,0.08); }
+    .post-card-accent { height: 4px; background: var(--red); }
+    .post-card.featured .post-card-accent { height: 6px; background: var(--gold); }
+    .post-card-body { padding: 28px 28px 24px; }
+    .post-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .post-tag { display: inline-block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; padding: 3px 10px; border-radius: 10px; }
+    .tag-research { background: var(--cream-mid); color: var(--red); }
+    .tag-community { background: #fdf0e0; color: #a06010; }
+    .tag-event { background: #e8f4e8; color: #2a6a2a; }
+    .tag-featured { background: var(--gold); color: var(--near-black); }
+    .post-card h3 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 400; color: var(--brown-dark); line-height: 1.35; margin-bottom: 10px; }
+    .post-card.featured h3 { font-size: 25px; }
+    .post-card p { font-size: 14px; line-height: 1.8; color: var(--text-body); margin-bottom: 12px; }
+    .post-card ul { margin: 0 0 16px 20px; }
+    .post-card ul li { font-size: 14px; line-height: 2; color: var(--text-body); }
+    .post-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--cream-mid); margin-top: 8px; }
+    .post-date { font-size: 12px; color: var(--text-muted); }
+    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .photo-grid img { width: 100%; border-radius: 4px; display: block; cursor: pointer; transition: opacity 0.2s; }
+    .photo-grid img:hover { opacity: 0.88; }
+    .sidebar { position: sticky; top: 80px; }
+    .sidebar-widget { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 22px 20px; margin-bottom: 20px; }
+    .sidebar-widget h4 { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 16px; }
+    .sidebar-link { display: block; font-size: 13px; color: var(--brown-dark); text-decoration: none; padding: 9px 0; border-bottom: 1px solid var(--cream-mid); line-height: 1.4; transition: color 0.2s; }
+    .sidebar-link:last-child { border-bottom: none; }
+    .sidebar-link:hover { color: var(--red); }
+    .newsletter-form input[type="email"] { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 3px; font-family: 'Lato', sans-serif; font-size: 13px; color: var(--brown-dark); background: var(--cream-light); margin-bottom: 10px; }
+    .newsletter-note { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(26,18,10,0.92); z-index: 300; align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 4px; }
+    .lightbox-close { position: fixed; top: 20px; right: 24px; background: none; border: none; color: var(--cream); font-size: 36px; cursor: pointer; line-height: 1; opacity: 0.8; }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-prev, .lightbox-next { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(245,239,228,0.12); border: 1px solid rgba(245,239,228,0.2); color: var(--cream); font-size: 22px; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .lightbox-prev { left: 16px; } .lightbox-next { right: 16px; }
+    @media (max-width: 900px) { .updates-layout { grid-template-columns: 1fr; gap: 32px; padding: 32px 20px 48px; } .sidebar { position: static; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Mikanah Gatherings logo">
+      <span class="nav-logo-text">Mikanah <span>Gatherings</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Research Team</a></li>
+      <li><a href="updates.html" class="active">Updates &amp; Findings</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sacred-strip"><span class="s-white"></span><span class="s-yellow"></span><span class="s-red"></span><span class="s-black"></span></div>
+
+  <div class="page-hero">
+    <h1>Updates &amp; Findings</h1>
+    <p>Research updates, event recaps, community stories, and project findings from the Mikanah Gatherings team.</p>
+  </div>
+
+  <div class="updates-layout">
+    <main>
+      <div class="post-card featured">
+        <div class="post-card-accent"></div>
+        <div class="post-card-body">
+          <div class="post-tags"><span class="post-tag tag-featured">Featured</span><span class="post-tag tag-event">Event Recap</span></div>
+          <h3>Mikanah Gatherings — Brandon Spring Event</h3>
+          <p>In February 2026, we welcomed over 200 students to the Riverbank Discovery Centre in Brandon. Students came from Brandon School Division, Southwest Horizon School Division, Sioux Valley School, and Northlight Learning Consortium.</p>
+          <p>Students visited learning stations about Indigenous spring equinox teachings, Métis land-based traditions like hunting, trapping, and the Michif language, and outdoor winter safety. They also took part in fun activities like snowshoeing, shelter building, slingshots, ice suncatcher making, and sitting around fire pits.</p>
+          <p>Everyone enjoyed hot chocolate from Chez Angela, and knowledge carriers, volunteers, and staff were treated to a warm lunch of soup and hot dogs.</p>
+          <p>A big thank you to everyone who made this event possible:</p>
+          <ul>
+            <li>Knowledge keepers <strong>Debbie Huntinghawk</strong>, <strong>Chris Leforte</strong>, and <strong>Stephen Petrie</strong></li>
+            <li>Volunteers <strong>Ross Robinson</strong>, <strong>Mike McPhee</strong>, and <strong>Debbi Neufeld</strong></li>
+            <li><strong>Aurora Reunification Village</strong> and the <strong>Good Hearted Warriors</strong> for the firewood</li>
+            <li><strong>Brandon Search and Rescue</strong></li>
+            <li>Organizers <strong>Raven Willoughby</strong> and <strong>Dezarae Bodnar</strong></li>
+            <li>Funders: <strong>Brandon School Division</strong>, <strong>University of Manitoba</strong>, and <strong>CIHR</strong></li>
+          </ul>
+          <div class="photo-grid">
+            <img src="images/brandon-event-1.png" alt="Brandon Gathering event photos" onclick="openLightbox(0)">
+            <img src="images/brandon-event-2.png" alt="Brandon Gathering event photos" onclick="openLightbox(1)">
+          </div>
+          <div class="post-footer"><span class="post-date">February 12–14, 2026</span></div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-accent"></div>
+        <div class="post-card-body">
+          <div class="post-tags"><span class="post-tag tag-research">Research Update</span></div>
+          <h3>Mikanah Gatherings: Project Launch</h3>
+          <p>In February 2026, the Mikanah Gatherings team came together to officially launch the project. We finalized our survey questions and confirmed plans to host gatherings in all three cities — Winnipeg, Brandon, and Selkirk.</p>
+          <p>Mikanah Gatherings brings Indigenous communities together through land-based activities tied to the four seasons. Our events are free, family-friendly, and held outdoors on local trails and green spaces. Each gathering includes teachings, activities, and time to connect with the land and each other.</p>
+          <p>We are excited to get started and look forward to seeing our communities come together throughout 2026!</p>
+          <div class="post-footer"><span class="post-date">February 17, 2026</span></div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <h4>Categories</h4>
+        <a href="#" class="sidebar-link">Research Updates</a>
+        <a href="#" class="sidebar-link">Community Stories</a>
+        <a href="#" class="sidebar-link">Event Recaps</a>
+        <a href="#" class="sidebar-link">Findings &amp; Reports</a>
+        <a href="#" class="sidebar-link">Newsletters</a>
+      </div>
+      <div class="sidebar-widget">
+        <h4>Related Projects</h4>
+        <a href="https://www.urbantrailsresearch.ca/general-8" target="_blank" class="sidebar-link">ESCALATE</a>
+        <a href="https://www.urbantrailsresearch.ca/general-8-2" target="_blank" class="sidebar-link">CATCH</a>
+        <a href="https://www.urbantrailsresearch.ca/general-8-1" target="_blank" class="sidebar-link">New PATHS</a>
+      </div>
+      <div class="sidebar-widget">
+        <h4>Stay Informed</h4>
+        <p class="newsletter-note">Sign up to receive updates from the Mikanah Gatherings team.</p>
+        <form class="newsletter-form" onsubmit="handleSignup(event)">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit" class="btn-primary" style="width:100%;font-size:11px;padding:11px;">Subscribe</button>
+        </form>
+      </div>
+      <div class="sidebar-widget">
+        <h4>Contact</h4>
+        <a href="tel:2047893591" class="sidebar-link">(204) 789-3591</a>
+        <a href="contact.html" class="sidebar-link">Send us a message →</a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOnOverlay(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-prev" onclick="changePhoto(-1)">‹</button>
+    <img id="lightbox-img" src="" alt="Event photo">
+    <button class="lightbox-next" onclick="changePhoto(1)">›</button>
+  </div>
+
+  <div class="partners-bar">
+    <p>Research &amp; Community Partners</p>
+    <div class="partner-logos">
+      <a href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" class="partner-pill">CIHR</a>
+      <a href="https://www.chrim.ca/" target="_blank" class="partner-pill">Children's Hospital Research Institute of Manitoba</a>
+      <a href="https://www.dreamdiabetesresearch.com/" target="_blank" class="partner-pill">DREAM</a>
+      <a href="https://umanitoba.ca/" target="_blank" class="partner-pill">University of Manitoba</a>
+      <a href="https://www.winnipegboldness.ca/" target="_blank" class="partner-pill">Winnipeg Boldness Project</a>
+      <a href="https://riverbank.mb.ca/" target="_blank" class="partner-pill">Brandon Riverbank</a>
+      <a href="https://www.myselkirk.ca/" target="_blank" class="partner-pill">City of Selkirk</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-logo">Mikanah <span>Gatherings</span></div>
+    <ul class="footer-links"><li><a href="events.html">Events</a></li><li><a href="team.html">Team</a></li><li><a href="updates.html">Updates</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="footer-note">Part of the Urban Trails Research Program &nbsp;·&nbsp; <a href="https://www.urbantrailsresearch.ca" style="color:#6a5040;">urbantrailsresearch.ca</a></div>
+  </footer>
+
+  <script>
+    const photos=['images/brandon-event-1.png','images/brandon-event-2.png'];
+    let current=0;
+    function openLightbox(i){current=i;document.getElementById('lightbox-img').src=photos[current];document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+    function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+    function closeLightboxOnOverlay(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
+    function changePhoto(dir){current=(current+dir+photos.length)%photos.length;document.getElementById('lightbox-img').src=photos[current];}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')changePhoto(-1);if(e.key==='ArrowRight')changePhoto(1);});
+    function handleSignup(e){e.preventDefault();const btn=e.target.querySelector('button');btn.textContent='Subscribed!';btn.style.background='#3d1f0a';btn.disabled=true;}
+  </script>
+</body>
+</html>

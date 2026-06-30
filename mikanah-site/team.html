@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Team — Mikanah Gatherings</title>
+  <meta name="description" content="Meet the researchers, knowledge keepers, and community partners behind Mikanah Gatherings.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .team-intro {
+      background: var(--cream);
+      padding: 40px 48px 0;
+    }
+    .team-intro p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-body);
+      max-width: 720px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .team-section {
+      padding: 40px 48px 8px;
+      background: var(--cream);
+    }
+    .team-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      margin-bottom: 20px;
+    }
+    .team-subsection {
+      padding: 16px 48px 8px;
+      background: var(--cream);
+    }
+    .team-subsection h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--brown-mid);
+      font-style: italic;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .team-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 48px 0;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 16px 48px 32px;
+      background: var(--cream);
+    }
+    .team-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 24px;
+      transition: box-shadow 0.2s;
+    }
+    .team-card:hover { box-shadow: 0 4px 16px rgba(61,31,10,0.08); }
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--brown-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .team-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      margin-bottom: 4px;
+    }
+    .team-role {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .team-card p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--text-body);
+    }
+    .team-institution {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--cream-mid);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .contact-cta {
+      background: var(--cream-mid);
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+    }
+    .contact-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      margin-bottom: 8px;
+    }
+    .contact-cta p { font-size: 14px; color: var(--text-body); }
+    @media (max-width: 768px) {
+      .team-intro, .team-section, .team-subsection { padding-left: 20px; padding-right: 20px; }
+      .team-grid { grid-template-columns: 1fr; padding-left: 20px; padding-right: 20px; }
+      .team-divider { margin-left: 20px; margin-right: 20px; }
+      .contact-cta { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Mikanah Gatherings logo">
+      <span class="nav-logo-text">Mikanah <span>Gatherings</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html" class="active">Research Team</a></li>
+      <li><a href="updates.html">Updates &amp; Findings</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sacred-strip">
+    <span class="s-white"></span><span class="s-yellow"></span><span class="s-red"></span><span class="s-black"></span>
+  </div>
+
+  <div class="page-hero">
+    <h1>Research Team</h1>
+    <p>Researchers, knowledge keepers, and community collaborators working together across the Urban Trails Research Program.</p>
+  </div>
+
+  <div class="team-intro">
+    <p>Mikanah Gatherings is built on relationships — between researchers and communities, between institutions and land, and between generations of knowledge. Our team brings together academic researchers, Indigenous knowledge keepers, and community partners committed to Indigenous self-determination and culturally grounded research practice.</p>
+  </div>
+
+  <!-- 1. PRINCIPAL INVESTIGATORS -->
+  <section class="team-section">
+    <div class="section-label">Leadership</div>
+    <h2>Principal Investigators</h2>
+  </section>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">JM</div>
+      <h3>Jon McGavock</h3>
+      <div class="team-role">Principal Investigator</div>
+      <p>Jon's research spans causal inference to community-based participatory action research, focusing on determinants of type 2 diabetes, urban cycling infrastructure for chronic disease prevention, and peer mentoring for youth. Cross-cutting priorities include patient-community engagement and anti-racist approaches to health equity.</p>
+      <div class="team-institution">University of Manitoba</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">JF</div>
+      <h3>Jaimy Fischer</h3>
+      <div class="team-role">Co-Principal Investigator</div>
+      <p>Jaimy (she/they) is a Provost's Postdoctoral Fellow and Michif (Métis) researcher with expertise in equity and transport, GIScience, and decolonizing practices. Their research embeds Indigenous perspectives and methodologies in transportation planning, policy, data, and measures.</p>
+      <div class="team-institution">University of Victoria</div>
+    </div>
+  </div>
+
+  <!-- 2. KNOWLEDGE KEEPERS -->
+  <div class="team-divider"></div>
+  <section class="team-section">
+    <div class="section-label">Cultural Guidance</div>
+    <h2>Knowledge Keepers &amp; Cultural Advisors</h2>
+  </section>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">HS</div>
+      <h3>Helen Settee</h3>
+      <div class="team-role">Knowledge Keeper</div>
+      <p>Helen is Anishinaabe from Dauphin River First Nation, residing in Winnipeg on Treaty 1 territory, and is honoured to carry her first language, Anishinaabemowin (Ojibwe). As Director with the Indigenous Inclusion Directorate at Manitoba Education and Early Childhood Learning, her advocacy work is deeply informed by personal and family experiences with Type 2 diabetes and kidney disease. She lives The Good Life as an Anishinaabe-kwe, sharing teachings as a mother and proud Kookum to three grandchildren.</p>
+      <div class="team-institution">Manitoba Education &amp; Early Childhood Learning</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">BR</div>
+      <h3>Brian Rice</h3>
+      <div class="team-role">Knowledge Keeper</div>
+      <p>Brian is a graduate of the world's only all-Indigenous doctoral program, The Traditional Knowledge Program, where his research took him through approximately 700 miles of traditional Rotinonshonni territory. Over a 30-year academic career spanning Canada, Thailand, Kenya, Japan and beyond, he co-founded the Masters Program in Peace and Conflict Studies at the University of Manitoba. A lifelong global advocate for Indigenous communities, Brian brings deep expertise in healing, wellness, governance, and education.</p>
+      <div class="team-institution">University of Manitoba</div>
+    </div>
+  </div>
+
+  <!-- 3. COMMUNITY PARTNERS -->
+  <div class="team-divider"></div>
+  <section class="team-section">
+    <div class="section-label">Community Partners</div>
+    <h2>Community Partners</h2>
+  </section>
+
+  <div class="team-subsection"><h3>Winnipeg</h3></div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">DR</div>
+      <h3>Diane Roussin</h3>
+      <div class="team-role">Project Director</div>
+      <p>Diane is a dedicated community leader and a proud member of the Skownan First Nation. With over two decades of work with organizations and projects that respect the rights of Indigenous families, children, and individuals to care for themselves and thrive, she holds Bachelor of Arts and Bachelor of Social Work degrees. Diane is a cherished member of a large extended family and a loving mother of two daughters.</p>
+      <div class="team-institution">Winnipeg Boldness Project</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">KR</div>
+      <h3>Katherine Rempel</h3>
+      <div class="team-role">Program Coordinator</div>
+      <p>Katherine is a proud Métis woman born and raised in Winnipeg. She holds a Masters of Development Practices: Indigenous Development from the University of Winnipeg and brings skills in research, program development, and facilitation, driven by a deep commitment to reconciliation and diversified worldviews.</p>
+      <div class="team-institution">Winnipeg Boldness Project</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">AR</div>
+      <h3>Aidan Roberts</h3>
+      <div class="team-role">Research Assistant</div>
+      <p>Aidan is born and raised in Winnipeg with previous experience in career development and curriculum design for school-age children. She is proud to contribute to innovative work that benefits the North End community.</p>
+      <div class="team-institution">Winnipeg Boldness Project</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">AS</div>
+      <h3>Anders Swanson</h3>
+      <div class="team-role">Community Partner</div>
+      <p>Anders is the Executive Director of Winnipeg Trails. With a background in multimedia and animation, he brings a passion for reimagining transportation and active mobility, with deep expertise in active transportation facility design and community engagement.</p>
+      <div class="team-institution">Winnipeg Trails</div>
+    </div>
+  </div>
+
+  <div class="team-subsection"><h3>Brandon</h3></div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">DH</div>
+      <h3>Dean Hammond</h3>
+      <div class="team-role">Executive Director</div>
+      <p>Dean is the Executive Director of Brandon Riverbank Inc., born and raised in Brandon. He holds a business degree from Brandon University and is a Chartered Professional Accountant (CPA), overseeing administration, programs, and strategic plans of the organization in close partnership with the Board of Directors, City of Brandon, and community partners.</p>
+      <div class="team-institution">Brandon Riverbank Inc.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">IG</div>
+      <h3>Ingrid Gatin</h3>
+      <div class="team-role">Programming &amp; Community Coordinator</div>
+      <p>Ingrid holds a B.A. in Conflict Resolution and a Masters in Sustainable Development, and leads Riverbank's school-based interpretive programs and nature-based community initiatives including Indigenous-based and winter programming.</p>
+      <div class="team-institution">Brandon Riverbank Inc.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">DM</div>
+      <h3>Devyn McKay</h3>
+      <div class="team-role">Mikanah Coordinator</div>
+      <p>Devyn is from Rolling River First Nation, Manitoba, and is a Treaty Forest signatory. He brings substantial experience in community engagement and Indigenous partnership work, including three years engaging Indigenous communities through Parks Canada.</p>
+      <div class="team-institution">Brandon Riverbank Inc.</div>
+    </div>
+  </div>
+
+  <!-- 4. RESEARCH COORDINATOR & CO-INVESTIGATORS -->
+  <div class="team-divider"></div>
+  <section class="team-section">
+    <div class="section-label">Research</div>
+    <h2>Research Coordinator &amp; Co-Investigators</h2>
+  </section>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">JA</div>
+      <h3>Jana Apperley</h3>
+      <div class="team-role">Research Coordinator</div>
+      <p>Jana is the research coordinator for this study, having worked at the Children's Hospital Research Institute of Manitoba for close to 10 years. She holds a Master's of Science in Kinesiology from the University of Manitoba and brings a passion for fitness and community health research.</p>
+      <div class="team-institution">Children's Hospital Research Institute of Manitoba</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">EM</div>
+      <h3>Erin Millions</h3>
+      <div class="team-role">Co-Investigator</div>
+      <p>Erin (she/her) is a settler historian of colonialism, childhood, and Indigenous histories in Canada, with a focus on Indigenous health and education. Her community-engaged work includes the Manitoba Indigenous Tuberculosis History Project, Indigenous Afternoons in the Archives, and historical research for the Canadian Museum for Human Rights and the BBC.</p>
+      <div class="team-institution">University of Winnipeg</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">MM</div>
+      <h3>Mélanie Morris</h3>
+      <div class="team-role">Co-Investigator</div>
+      <p>Mélanie is Métis from the St. Laurent/St. Eustache Settlement and is the first Indigenous pediatric surgeon in Canada. As the first person appointed lead for Indigenous health at the Winnipeg Children's Hospital, she has transformed it into a culturally safe space for Indigenous children and families, and advises the Royal College of Physicians and Surgeons of Canada on Indigenous health and gender equity.</p>
+      <div class="team-institution">University of Manitoba / University of British Columbia</div>
+    </div>
+  </div>
+
+  <div class="contact-cta">
+    <div>
+      <h2>Work with our team</h2>
+      <p>Interested in community partnership, research collaboration, or learning more about our work?</p>
+    </div>
+    <a href="contact.html" class="btn-primary">Get in Touch</a>
+  </div>
+
+  <div class="partners-bar">
+    <p>Research &amp; Community Partners</p>
+    <div class="partner-logos">
+      <a href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" class="partner-pill">CIHR</a>
+      <a href="https://www.chrim.ca/" target="_blank" class="partner-pill">Children's Hospital Research Institute of Manitoba</a>
+      <a href="https://www.dreamdiabetesresearch.com/" target="_blank" class="partner-pill">DREAM</a>
+      <a href="https://umanitoba.ca/" target="_blank" class="partner-pill">University of Manitoba</a>
+      <a href="https://www.winnipegboldness.ca/" target="_blank" class="partner-pill">Winnipeg Boldness Project</a>
+      <a href="https://riverbank.mb.ca/" target="_blank" class="partner-pill">Brandon Riverbank</a>
+      <a href="https://www.myselkirk.ca/" target="_blank" class="partner-pill">City of Selkirk</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo">Mikanah <span>Gatherings</span></div>
+    <ul class="footer-links">
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-note">
+      Part of the Urban Trails Research Program &nbsp;·&nbsp;
+      <a href="https://www.urbantrailsresearch.ca" style="color:#6a5040;">urbantrailsresearch.ca</a>
+    </div>
+  </footer>
+
+</body>
+</html>

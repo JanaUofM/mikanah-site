@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mikanah Gatherings — Where Paths Meet</title>
+  <meta name="description" content="Mikanah Gatherings are culturally grounded, urban land-based events for Indigenous communities across Manitoba — held in Winnipeg, Brandon, and Selkirk.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- HERO — full-width map background ---- */
+    .hero {
+      background: #f5f5f5;
+      padding: 72px 48px 68px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1920 / 1325;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-map-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/map-bg.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0.45;
+    }
+    .hero-map-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(245, 245, 245, 0.1);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-logo {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 28px;
+      border-radius: 50%;
+      background: transparent;
+      padding: 0;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #b83c2a;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 50px;
+      font-weight: 400;
+      color: #2a1206;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      max-width: 680px;
+      text-shadow: 0 1px 6px rgba(245,245,245,0.95), 0 0 20px rgba(245,245,245,0.7);
+    }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: #4a2810;
+      margin-bottom: 40px;
+      line-height: 1.5;
+      text-shadow: 0 1px 4px rgba(245,245,245,0.9);
+    }
+    .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero .btn-primary { background: #3d1f0a; color: var(--cream); }
+    .hero .btn-primary:hover { background: #2a1206; }
+    .hero .btn-outline { color: #2a1206; border-color: rgba(42,18,6,0.5); }
+    .hero .btn-outline:hover { background: rgba(42,18,6,0.08); border-color: #2a1206; }
+
+    /* ---- MAP MARKERS — city name only, no subtitle ---- */
+    .map-markers {
+      background: #3d1f0a;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .map-marker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .marker-pin {
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .marker-pin-inner {
+      width: 10px;
+      height: 10px;
+      background: #3d1f0a;
+      border-radius: 50%;
+      transform: rotate(45deg);
+    }
+    .marker-city {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+    .marker-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(245,239,228,0.15);
+    }
+
+    /* ---- MÉTIS SASH — real photo, medium height, faded ---- */
+    .metis-sash {
+      width: 100%;
+      height: 65px;
+      overflow: hidden;
+      position: relative;
+    }
+    .metis-sash img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      opacity: 0.55;
+      display: block;
+    }
+
+    /* ---- CAROUSEL ---- */
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+      background: var(--near-black);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.65s ease;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      height: 400px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+    .carousel-slide-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .carousel-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,18,10,0.82) 0%, rgba(26,18,10,0.15) 60%, transparent 100%);
+    }
+    .carousel-caption {
+      position: relative;
+      z-index: 2;
+      padding: 28px 48px;
+      width: 100%;
+    }
+    .carousel-tag {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .carousel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.3;
+      max-width: 640px;
+    }
+    .carousel-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 10;
+    }
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(245,239,228,0.3);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      padding: 0;
+    }
+    .carousel-dot.active { background: var(--gold); }
+    .carousel-arrow {
+      background: rgba(245,239,228,0.12);
+      border: 1px solid rgba(245,239,228,0.2);
+      color: var(--cream);
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    .carousel-arrow:hover { background: rgba(245,239,228,0.25); }
+    .carousel-arrow-l { left: 16px; }
+    .carousel-arrow-r { right: 16px; }
+
+    /* ---- SUBTLE PATTERNS ---- */
+    .mission-text { position: relative; overflow: hidden; }
+    .mission-beadwork {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #3d1f0a 1px, transparent 1px),
+        radial-gradient(circle, #b83c2a 1px, transparent 1px);
+      background-size: 14px 14px, 14px 14px;
+      background-position: 0 0, 7px 7px;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .about-teaser { position: relative; overflow: hidden; }
+    .about-diamond {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(45deg, #3d1f0a 25%, transparent 25%),
+        linear-gradient(-45deg, #3d1f0a 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #3d1f0a 75%),
+        linear-gradient(-45deg, transparent 75%, #3d1f0a 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    /* ---- MISSION ---- */
+    .mission {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .mission-text {
+      padding: 72px 56px;
+      background: var(--cream);
+    }
+    .mission-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .mission-text p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: 16px;
+    }
+    .mission-dark {
+      background: var(--brown-dark);
+      padding: 72px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mission-dark p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--brown-light);
+      margin-bottom: 32px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a08060;
+      line-height: 1.4;
+    }
+
+    /* ---- SEASONS ---- */
+    .seasons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .season {
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .season-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+      line-height: 1;
+    }
+    .season h3 {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .season p { font-size: 13px; line-height: 1.5; }
+    .season.s1 { background: var(--off-white); }
+    .season.s2 { background: var(--gold); }
+    .season.s3 { background: var(--red); }
+    .season.s4 { background: var(--near-black); }
+    .season.s1 h3, .season.s2 h3 { color: var(--brown-dark); }
+    .season.s3 h3 { color: var(--cream); }
+    .season.s4 h3 { color: var(--gold); }
+    .season.s1 p, .season.s2 p { color: var(--brown-mid); }
+    .season.s3 p, .season.s4 p { color: var(--brown-light); }
+
+    /* ---- ABOUT TEASER ---- */
+    .about-teaser {
+      padding: 72px 48px;
+      background: var(--cream-mid);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-teaser-label .section-label { margin-bottom: 16px; }
+    .about-teaser-label h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--brown-dark);
+      line-height: 1.3;
+    }
+    .about-teaser-body p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: 16px;
+    }
+    .about-teaser-body p:last-of-type { margin-bottom: 24px; }
+
+    /* ---- CTA BAND ---- */
+    .cta-band {
+      background: var(--brown-dark);
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--cream);
+    }
+    .cta-band p {
+      font-size: 14px;
+      color: var(--brown-light);
+      margin-top: 6px;
+      max-width: 500px;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .mission { grid-template-columns: 1fr; }
+      .seasons { grid-template-columns: repeat(2, 1fr); }
+      .about-teaser { grid-template-columns: 1fr; gap: 24px; padding: 48px 20px; }
+      .hero h1 { font-size: 36px; }
+      .mission-text, .mission-dark { padding: 48px 24px; }
+      .cta-band { padding: 40px 20px; flex-direction: column; align-items: flex-start; }
+      .map-markers { gap: 20px; padding: 20px 24px; }
+      .marker-divider { display: none; }
+      .carousel-caption { padding: 24px 20px; }
+      .carousel-controls { right: 20px; }
+      .carousel-title { font-size: 18px; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 48px 20px 44px; min-height: auto; }
+      .hero h1 { font-size: 30px; }
+      .hero-logo { width: 160px; height: 160px; }
+      .seasons { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .map-markers { flex-direction: column; gap: 16px; }
+      .carousel-slide { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Mikanah Gatherings logo">
+      <span class="nav-logo-text">Mikanah <span>Gatherings</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Research Team</a></li>
+      <li><a href="updates.html">Updates &amp; Findings</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sacred-strip">
+    <span class="s-white"></span><span class="s-yellow"></span><span class="s-red"></span><span class="s-black"></span>
+  </div>
+
+  <!-- HERO — full-width map -->
+  <section class="hero">
+    <div class="hero-map-bg"></div>
+    <div class="hero-map-overlay"></div>
+    <div class="hero-content">
+      <img src="images/logo.png" alt="Mikanah Gatherings" class="hero-logo">
+      <div class="hero-eyebrow">Urban Trails Research · Manitoba</div>
+      <h1>Where Paths Meet for Ceremony, Teachings &amp; Community</h1>
+      <p class="hero-tagline">Culturally grounded, urban land-based gatherings<br>for Indigenous communities across Manitoba</p>
+      <div class="hero-ctas">
+        <a href="events.html" class="btn-primary">View Upcoming Events</a>
+        <a href="updates.html" class="btn-outline">Research &amp; Updates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP MARKERS — city name only -->
+  <div class="map-markers">
+    <div class="map-marker">
+      <div class="marker-pin"><div class="marker-pin-inner"></div></div>
+      <span class="marker-city">Winnipeg</span>
+    </div>
+    <div class="marker-divider"></div>
+    <div class="map-marker">
+      <div class="marker-pin"><div class="marker-pin-inner"></div></div>
+      <span class="marker-city">Brandon</span>
+    </div>
+    <div class="marker-divider"></div>
+    <div class="map-marker">
+      <div class="marker-pin"><div class="marker-pin-inner"></div></div>
+      <span class="marker-city">Selkirk</span>
+    </div>
+  </div>
+
+  <!-- MÉTIS SASH — real photo, medium height, faded -->
+  <div class="metis-sash" aria-label="Métis sash — ceinture fléchée">
+    <img src="images/metis-sash.jpg" alt="Métis sash textile — ceinture fléchée">
+  </div>
+
+  <!-- COMMUNITY CAROUSEL -->
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="carousel-slide">
+        <div class="carousel-slide-img" style="background-image: url('images/brandon-event-1.png');"></div>
+        <div class="carousel-slide-overlay"></div>
+        <div class="carousel-caption">
+          <div class="carousel-tag">Brandon · February 2026</div>
+          <div class="carousel-title">200+ students gather at the Riverbank Discovery Centre for land-based teachings</div>
+        </div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-slide-img" style="background-image: url('images/brandon-event-2.png');"></div>
+        <div class="carousel-slide-overlay"></div>
+        <div class="carousel-caption">
+          <div class="carousel-tag">Brandon · February 2026</div>
+          <div class="carousel-title">Snowshoeing, shelter building, and fire pits on the trail</div>
+        </div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-slide-img" style="background-image: url('images/carousel-winnipeg.jpg'); background-position: center 70%;"></div>
+        <div class="carousel-slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-slide-img" style="background-image: url('images/carousel-assiniboine.jpg'); background-position: center 80%;"></div>
+        <div class="carousel-slide-overlay"></div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-slide-img" style="background-image: url('images/carousel-selkirk.jpg'); background-position: center 60%;"></div>
+        <div class="carousel-slide-overlay"></div>
+      </div>
+
+    </div>
+    <button class="carousel-arrow carousel-arrow-l" onclick="carouselSlide(-1)">&#8249;</button>
+    <button class="carousel-arrow carousel-arrow-r" onclick="carouselSlide(1)">&#8250;</button>
+    <div class="carousel-controls" id="carouselDots"></div>
+  </div>
+
+  <!-- MISSION -->
+  <section class="mission">
+    <div class="mission-text">
+      <div class="mission-beadwork"></div>
+      <div class="section-label">Our Mission</div>
+      <h2>Empowering Indigenous communities through land-based connection</h2>
+      <p>Mikanah Gatherings are a series of annual events rooted in the belief that urban green spaces can be sites of ceremony, healing, and belonging. We bring together knowledge keepers, youth, families, and community members to walk, learn, and gather on the land together.</p>
+      <p>Beginning in 2026, gatherings will be held in Winnipeg, Brandon, and Selkirk — honouring each of the four sacred seasons.</p>
+    </div>
+    <div class="mission-dark">
+      <p>Our gatherings are grounded in Indigenous ways of knowing and are part of a broader research initiative examining how urban trails and green spaces support the health and self-determination of Indigenous peoples.</p>
+      <div class="stats">
+        <div class="stat-block">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Annual gatherings<br>across all cities</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Cities across<br>Manitoba</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">2026</div>
+          <div class="stat-label">Inaugural<br>gathering year</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">7</div>
+          <div class="stat-label">Research &amp;<br>community partners</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEASONS -->
+  <div class="seasons">
+    <div class="season s1">
+      <span class="season-icon">&#9681;</span>
+      <h3>Winter Solstice</h3>
+      <p>Ceremony &amp; reflection on the longest night</p>
+    </div>
+    <div class="season s2">
+      <span class="season-icon">&#10022;</span>
+      <h3>Spring Equinox</h3>
+      <p>Teachings &amp; renewal on the land</p>
+    </div>
+    <div class="season s3">
+      <span class="season-icon">&#9678;</span>
+      <h3>Summer Solstice</h3>
+      <p>Fire, story &amp; community gathering</p>
+    </div>
+    <div class="season s4">
+      <span class="season-icon" style="color:var(--gold);">&#9672;</span>
+      <h3>Fall Equinox</h3>
+      <p>Harvest, thanksgiving &amp; teaching</p>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-teaser">
+    <div class="about-diamond"></div>
+    <div class="about-teaser-label">
+      <div class="section-label">About the Project</div>
+      <h2>A research-driven community initiative</h2>
+    </div>
+    <div class="about-teaser-body">
+      <p>Mikanah Gatherings is a community-engaged research project embedded within the Urban Trails Research Program at the University of Manitoba. Our goal is to empower Indigenous communities through culturally grounded, urban land-based activities that foster health, belonging, and self-determination.</p>
+      <p>Each gathering is co-designed with community members, knowledge keepers, and research partners to ensure they are culturally safe, meaningful, and rooted in place. We are committed to Indigenous research principles and community-driven approaches throughout the project.</p>
+      <a href="team.html" class="btn-primary" style="background: var(--brown-dark); color: var(--cream);">Meet the Research Team</a>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div>
+      <h2>Gatherings begin in 2026</h2>
+      <p>Stay informed about upcoming events in Winnipeg, Brandon, and Selkirk — or get in touch with the research team.</p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="events.html" class="btn-primary">See All Events</a>
+      <a href="contact.html" class="btn-outline">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <div class="partners-bar">
+    <p>Research &amp; Community Partners</p>
+    <div class="partner-logos">
+      <a href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" class="partner-pill">CIHR</a>
+      <a href="https://www.chrim.ca/" target="_blank" class="partner-pill">Children's Hospital Research Institute of Manitoba</a>
+      <a href="https://www.dreamdiabetesresearch.com/" target="_blank" class="partner-pill">DREAM</a>
+      <a href="https://umanitoba.ca/" target="_blank" class="partner-pill">University of Manitoba</a>
+      <a href="https://www.winnipegboldness.ca/" target="_blank" class="partner-pill">Winnipeg Boldness Project</a>
+      <a href="https://riverbank.mb.ca/" target="_blank" class="partner-pill">Brandon Riverbank</a>
+      <a href="https://www.myselkirk.ca/" target="_blank" class="partner-pill">City of Selkirk</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">Mikanah <span>Gatherings</span></div>
+    <ul class="footer-links">
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-note">
+      Part of the Urban Trails Research Program &nbsp;·&nbsp;
+      <a href="https://www.urbantrailsresearch.ca" style="color:#6a5040;">urbantrailsresearch.ca</a>
+      &nbsp;·&nbsp; Central Site: University of Manitoba, 511-715 McDermot Ave, Winnipeg MB R3E 3P4
+    </div>
+  </footer>
+
+  <script>
+    let carouselCurrent = 0;
+    const carouselTotal = 5;
+    const dotsContainer = document.getElementById('carouselDots');
+    for (let i = 0; i < carouselTotal; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.onclick = () => carouselGoTo(i);
+      dotsContainer.appendChild(dot);
+    }
+    function carouselGoTo(n) {
+      carouselCurrent = (n + carouselTotal) % carouselTotal;
+      document.getElementById('carouselTrack').style.transform = `translateX(-${carouselCurrent * 100}%)`;
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === carouselCurrent));
+    }
+    function carouselSlide(dir) { carouselGoTo(carouselCurrent + dir); }
+    setInterval(() => carouselSlide(1), 4500);
+  </script>
+
+</body>
+</html>

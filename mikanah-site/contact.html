@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Mikanah Gatherings</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 3fr 2fr; }
+    .contact-form-area { padding: 56px 56px 64px; background: var(--cream); }
+    .contact-form-area h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: var(--brown-dark); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field { margin-bottom: 18px; }
+    .form-field label { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 7px; }
+    .form-field input, .form-field textarea, .form-field select { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 3px; background: #fff; font-family: 'Lato', sans-serif; font-size: 14px; color: var(--brown-dark); transition: border-color 0.2s; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { outline: none; border-color: var(--gold); }
+    .form-field textarea { height: 120px; resize: vertical; }
+    .form-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a6040' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-success { display: none; background: #eaf3de; border: 1px solid #a0c870; border-radius: 4px; padding: 20px 24px; font-size: 14px; color: #2a5a10; line-height: 1.6; margin-top: 16px; }
+    .contact-info-area { background: var(--brown-dark); padding: 56px 48px 64px; }
+    .contact-info-area h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: var(--cream); margin-bottom: 32px; }
+    .info-item { margin-bottom: 28px; }
+    .info-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 6px; }
+    .info-item p { font-size: 14px; color: var(--brown-light); line-height: 1.7; }
+    .info-item a { color: var(--brown-light); text-decoration: none; transition: color 0.2s; }
+    .info-item a:hover { color: var(--cream); }
+    .info-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 32px 0; }
+    .info-note { background: rgba(232,168,48,0.1); border-left: 3px solid var(--gold); padding: 16px 18px; }
+    .info-note p { font-size: 13px; color: var(--brown-light); line-height: 1.6; }
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } .contact-form-area, .contact-info-area { padding: 40px 20px 48px; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Mikanah Gatherings logo">
+      <span class="nav-logo-text">Mikanah <span>Gatherings</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Research Team</a></li>
+      <li><a href="updates.html">Updates &amp; Findings</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sacred-strip"><span class="s-white"></span><span class="s-yellow"></span><span class="s-red"></span><span class="s-black"></span></div>
+
+  <div class="page-hero">
+    <h1>Get in Touch</h1>
+    <p>Questions about upcoming events, the research, or community partnership? We'd love to hear from you.</p>
+  </div>
+
+  <!-- Hidden form for Netlify detection -->
+  <form name="contact" data-netlify="true" hidden>
+    <input type="text" name="fname"><input type="text" name="lname"><input type="email" name="email"><input type="text" name="subject"><textarea name="message"></textarea>
+  </form>
+
+  <div class="contact-layout">
+    <div class="contact-form-area">
+      <h2>Send us a message</h2>
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="form-row">
+          <div class="form-field"><label for="fname">First Name</label><input type="text" id="fname" name="fname" placeholder="First name" required></div>
+          <div class="form-field"><label for="lname">Last Name</label><input type="text" id="lname" name="lname" placeholder="Last name" required></div>
+        </div>
+        <div class="form-field"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="">Select a subject...</option>
+            <option>Event Information</option>
+            <option>Community Partnership</option>
+            <option>Research Collaboration</option>
+            <option>Media / Press</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Your message..." required></textarea></div>
+        <button type="submit" class="btn-primary">Send Message</button>
+        <div class="form-success" id="form-success">Thank you for reaching out! A member of the Mikanah Gatherings team will be in touch with you soon.</div>
+      </form>
+    </div>
+    <div class="contact-info-area">
+      <h2>Contact Information</h2>
+      <div class="info-item"><div class="info-label">Central Site</div><p>Urban Trails Research Program<br>University of Manitoba<br>511-715 McDermot Avenue<br>Winnipeg, MB R3E 3P4</p></div>
+      <div class="info-item"><div class="info-label">Phone</div><p><a href="tel:2047893591">(204) 789-3591</a></p></div>
+      <div class="info-item"><div class="info-label">Part of</div><p><a href="https://www.urbantrailsresearch.ca" target="_blank">Urban Trails Research Program ↗</a></p></div>
+      <hr class="info-divider">
+      <div class="info-note"><p>Mikanah Gatherings is a community-engaged research project. We welcome inquiries from community members, organizations, researchers, and anyone interested in learning more about our work.</p></div>
+    </div>
+  </div>
+
+  <div class="partners-bar">
+    <p>Research &amp; Community Partners</p>
+    <div class="partner-logos">
+      <a href="https://cihr-irsc.gc.ca/e/193.html" target="_blank" class="partner-pill">CIHR</a>
+      <a href="https://www.chrim.ca/" target="_blank" class="partner-pill">Children's Hospital Research Institute of Manitoba</a>
+      <a href="https://www.dreamdiabetesresearch.com/" target="_blank" class="partner-pill">DREAM</a>
+      <a href="https://umanitoba.ca/" target="_blank" class="partner-pill">University of Manitoba</a>
+      <a href="https://www.winnipegboldness.ca/" target="_blank" class="partner-pill">Winnipeg Boldness Project</a>
+      <a href="https://riverbank.mb.ca/" target="_blank" class="partner-pill">Brandon Riverbank</a>
+      <a href="https://www.myselkirk.ca/" target="_blank" class="partner-pill">City of Selkirk</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-logo">Mikanah <span>Gatherings</span></div>
+    <ul class="footer-links"><li><a href="events.html">Events</a></li><li><a href="team.html">Team</a></li><li><a href="updates.html">Updates</a></li><li><a href="contact.html">Contact</a></li></ul>
+    <div class="footer-note">Part of the Urban Trails Research Program &nbsp;·&nbsp; <a href="https://www.urbantrailsresearch.ca" style="color:#6a5040;">urbantrailsresearch.ca</a></div>
+  </footer>
+
+  <script>
+    function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');btn.textContent='Sending...';btn.disabled=true;const data=new FormData(e.target);fetch('/',{method:'POST',body:data}).then(()=>{btn.style.display='none';document.getElementById('form-success').style.display='block';}).catch(()=>{btn.style.display='none';document.getElementById('form-success').style.display='block';});}
+  </script>
+</body>
+</html>
