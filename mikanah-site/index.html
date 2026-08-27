@@ -18,6 +18,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      /* Floor so the hero never gets wider (relative to its height) than map-bg.jpg
+         (2880x1987) - otherwise "cover" crops the image top/bottom and the markers
+         fall out of frame. Only engages when content is shorter than this; normal
+         content height wins on typical viewports. */
+      min-height: calc(100vw * 1987 / 2880);
     }
     .hero-map-bg {
       position: absolute;
@@ -44,7 +49,7 @@
       width: clamp(200px, 42vw, 500px);
       height: clamp(200px, 42vw, 500px);
       object-fit: contain;
-      margin-bottom: 10px;
+      margin-bottom: 2px;
       border-radius: 50%;
       background: transparent;
       padding: 0;
