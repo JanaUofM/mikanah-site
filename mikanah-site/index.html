@@ -10,14 +10,14 @@
     /* ---- HERO — full-width map background ---- */
     .hero {
       background: #f5f5f5;
-      padding: 72px 48px 40px;
+      padding: 32px 48px 16px;
       text-align: center;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       /* Floor so the hero never gets wider (relative to its height) than map-bg.jpg
          (2880x1987) - otherwise "cover" crops the image top/bottom and the markers
          fall out of frame. Only engages when content is shorter than this; normal
@@ -49,7 +49,7 @@
       width: clamp(200px, 42vw, 500px);
       height: clamp(200px, 42vw, 500px);
       object-fit: contain;
-      margin-bottom: 2px;
+      margin-bottom: 0;
       border-radius: 50%;
       background: transparent;
       padding: 0;
@@ -420,7 +420,7 @@
       .carousel-title { font-size: 18px; }
     }
     @media (max-width: 600px) {
-      .hero { padding: 48px 20px 28px; min-height: auto; }
+      .hero { padding: 24px 20px 14px; min-height: auto; }
       .hero h1 { font-size: 30px; }
       .seasons { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: 1fr 1fr; }
