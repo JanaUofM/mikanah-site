@@ -18,18 +18,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      /* Floor so the hero never gets wider (relative to its height) than map-bg.jpg
-         (2880x1987) - otherwise "cover" crops the image top/bottom and the markers
-         fall out of frame. Only engages when content is shorter than this; normal
-         content height wins on typical viewports. */
-      min-height: calc(100vw * 1987 / 2880);
+      /* map-bg.jpg (2880x1987) is anchored to the top (see .hero-map-bg), so any
+         crop from "cover" only ever eats into the bottom of the image, which is
+         empty map with no markers. The 3 city markers sit at roughly 13%/35%/59%
+         down the image; this floor guarantees at least the top 70% (to the lowest
+         marker plus buffer) always stays visible. Only engages on very wide
+         viewports where content alone is shorter than that; normal content height
+         wins otherwise. */
+      min-height: calc(100vw * 1391 / 2880);
     }
     .hero-map-bg {
       position: absolute;
       inset: 0;
       background-image: url('images/map-bg.jpg');
       background-size: cover;
-      background-position: center center;
+      background-position: center top;
       background-repeat: no-repeat;
       opacity: 0.45;
     }
